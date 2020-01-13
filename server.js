@@ -13,26 +13,26 @@ http
 
 // _________________________________________________________________________________
 
-    if (request.url.toLowerCase() === "/get_store") {
-      response.writeHead(200, {
-        Connection: "keep-alive",
-        "Content-Type": "text/event-stream",
-        "Cache-Control": "no-cache",
-        "Access-Control-Allow-Origin": "*"
-      });
-      console.log('here')
-      console.log(stored_lst)
-      if ( stored_lst != "undefined") {
-        response.write(stored_lst)
-        response.write("\n\n")
-      }else{
-        response.write("body")
-        response.write("\n\n")
-      }
-      response.end()
-      // request.end()
-
-    }
+    // if (request.url.toLowerCase() === "/get_store") {
+    //   response.writeHead(200, {
+    //     Connection: "keep-alive",
+    //     "Content-Type": "text/event-stream",
+    //     "Cache-Control": "no-cache",
+    //     "Access-Control-Allow-Origin": "*"
+    //   });
+    //   console.log('here')
+    //   console.log(stored_lst)
+    //   if ( stored_lst != "undefined") {
+    //     response.write(stored_lst)
+    //     response.write("\n\n")
+    //   }else{
+    //     response.write([])
+    //     response.write("\n\n")
+    //   }
+    //   response.end()
+    //   // request.end()
+    //
+    // }
 
 // _________________________________________________________________________________
 
