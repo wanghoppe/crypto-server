@@ -6,7 +6,7 @@ import datetime as dt
 
 cred = pika.credentials.PlainCredentials('hwa125', '960923')
 connection = pika.BlockingConnection(
-    pika.ConnectionParameters(host='ec2-3-19-67-238.us-east-2.compute.amazonaws.com', credentials=cred))
+    pika.ConnectionParameters(host='localhost', credentials=cred))
 channel = connection.channel()
 
 channel.queue_declare(queue='predict-second')

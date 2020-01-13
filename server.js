@@ -53,7 +53,7 @@ http
         // console.log(" [x] Received %s", msg.content.toString());
       };
 
-      amqp.connect('amqp://hwa125:960923@ec2-3-19-67-238.us-east-2.compute.amazonaws.com', function(err, conn) {
+      amqp.connect('amqp://hwa125:960923@localhost', function(err, conn) {
         if (typeof conn_g2 != "undefined") {
            conn_g2.close()
            console.log('closed~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
@@ -104,7 +104,7 @@ http
       };
 
 
-      amqp.connect('amqp://hwa125:960923@ec2-3-19-67-238.us-east-2.compute.amazonaws.com', function(err, conn) {
+      amqp.connect('amqp://hwa125:960923@localhost', function(err, conn) {
         if (typeof conn_g != "undefined") {
            conn_g.close()
            console.log('conng, closed~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
