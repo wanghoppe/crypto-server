@@ -15,7 +15,7 @@ http
 
     if (request.url.toLowerCase() === "/get_store") {
       response.writeHead(200, {
-        // Connection: "keep-alive",
+        Connection: "keep-alive",
         "Content-Type": "text/event-stream",
         "Cache-Control": "no-cache",
         "Access-Control-Allow-Origin": "*"
@@ -25,7 +25,8 @@ http
         response.write(stored_lst)
         response.write("\n\n")
       }else{
-        response.write("body")
+        // response.write("body")
+        // response.write("\n\n")
       }
       response.end()
       // request.end()
