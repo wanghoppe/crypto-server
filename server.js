@@ -24,6 +24,8 @@ http
       if ( stored_lst != "undefined") {
         response.write(stored_lst)
         response.write("\n\n")
+      }else{
+        response.write("body")
       }
       response.end()
       // request.end()
