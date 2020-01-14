@@ -140,7 +140,7 @@ def data_preparation(coin, coinID, time_period, time_frequency, agg, apiKey, cat
     return price_benchmark, timestamp_benchmark, coin_complete
 
 def pipeline(coin_complete, sequence_length, model):
-
+    print(coin_complete.shape)
     coin_complete = coin_complete.replace([np.inf, -np.inf], np.nan)
     coin_complete = coin_complete.fillna(0)
 
