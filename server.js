@@ -39,7 +39,10 @@ http
         "Access-Control-Allow-Origin": "*"
       });
       response_map.set(uuid, response);
-      response.on('close', ()=>{response_map.delete(uuid)})
+      response.on('close', ()=>{
+        console.log(uuid);
+        response_map.delete(uuid)
+      })
     }
   })
   .listen(80, () => {
