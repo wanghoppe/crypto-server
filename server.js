@@ -86,50 +86,50 @@ http
 
 // _________________________________________________________________________________
 
-    if (request.url.toLowerCase() === "/events") {
-      response.writeHead(200, {
-        // Connection: "keep-alive",
-        "Content-Type": "text/event-stream",
-        "Cache-Control": "no-cache",
-        "Access-Control-Allow-Origin": "*"
-      });
-
-      function res_func (data_msg) {
-        let msg = 'data' + ':' + data_msg;
-        // response.write('data:"-0.32718807"');
-        response.write(msg);
-        response.write("\n\n");
-        stored_lst = data_msg;
-        console.log(msg);
-        // console.log(" [x] Received %s", msg.content.toString());
-      };
-
-
-      amqp.connect('amqp://hwa125:960923@localhost', function(err, conn) {
-        if (typeof conn_g != "undefined") {
-           conn_g.close()
-           console.log('conng, closed~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
-           // console.log(conn)
-        }
-        conn_g = conn;
-        // console.log(conn_g);
-        conn.createChannel(function(err, ch) {
-          var q = 'predict-24';
-          // console.log(ch);
-          ch.assertQueue(q, {durable: false});
-          console.log(" [*] Waiting for messages in %s. To exit press CTRL+C", q);
-          ch.consume(q, function(msg) {
-
-            let data_msg = msg.content.toString()
-
-            res_func(data_msg)
-
-          }, {noAck: true});
-        });
-      });
-      // console.log(conn_g);
-
-    }
+    // if (request.url.toLowerCase() === "/events") {
+    //   response.writeHead(200, {
+    //     // Connection: "keep-alive",
+    //     "Content-Type": "text/event-stream",
+    //     "Cache-Control": "no-cache",
+    //     "Access-Control-Allow-Origin": "*"
+    //   });
+    //
+    //   function res_func (data_msg) {
+    //     let msg = 'data' + ':' + data_msg;
+    //     // response.write('data:"-0.32718807"');
+    //     response.write(msg);
+    //     response.write("\n\n");
+    //     stored_lst = data_msg;
+    //     console.log(msg);
+    //     // console.log(" [x] Received %s", msg.content.toString());
+    //   };
+    //
+    //
+    //   amqp.connect('amqp://hwa125:960923@localhost', function(err, conn) {
+    //     if (typeof conn_g != "undefined") {
+    //        conn_g.close()
+    //        console.log('conng, closed~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+    //        // console.log(conn)
+    //     }
+    //     conn_g = conn;
+    //     // console.log(conn_g);
+    //     conn.createChannel(function(err, ch) {
+    //       var q = 'predict-24';
+    //       // console.log(ch);
+    //       ch.assertQueue(q, {durable: false});
+    //       console.log(" [*] Waiting for messages in %s. To exit press CTRL+C", q);
+    //       ch.consume(q, function(msg) {
+    //
+    //         let data_msg = msg.content.toString()
+    //
+    //         res_func(data_msg)
+    //
+    //       }, {noAck: true});
+    //     });
+    //   });
+    //   // console.log(conn_g);
+    //
+    // }
     // else {
     //   response.writeHead(404);
     //   response.end();
