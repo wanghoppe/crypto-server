@@ -59,6 +59,7 @@ def time_series_to_supervised(df,sequence_length):
     '''
     temp = df.values
     temp = temp.tolist()
+    print('[Info]' + str(len(temp[0])))
 
     result = []
     for index in range(len(temp) - sequence_length +1):
