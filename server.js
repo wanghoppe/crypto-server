@@ -55,11 +55,11 @@ http
       };
 
       amqp.connect('amqp://hwa125:960923@localhost', function(err, conn) {
-        if (typeof conn_g2 != "undefined") {
-           conn_g2.close()
-           console.log('closed~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
-        }
-        conn_g2 = conn;
+        // if (typeof conn_g2 != "undefined") {
+        //    conn_g2.close()
+        //    console.log('closed~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+        // }
+        // conn_g2 = conn;
         // console.log(conn_g);
         conn.createChannel(function(err, ch) {
           var q = 'predict-second';
