@@ -148,9 +148,12 @@ def pipeline(coin_complete, sequence_length, model):
     max_abs_scaler = MaxAbsScaler()
     temp = max_abs_scaler.fit_transform(coin_complete)
     temp = pd.DataFrame(temp,columns=coin_complete.columns)
-    print(temp.shape)
     coin_complete = temp.set_index(coin_complete.index)
-    print(coin_complete.shape)
+
+    col_lst = list(coin_complete.columns)
+    col_lst.remove('code_repo_contributors')
+    coin_complete = coin_complete[col_lst]
+
     x = time_series_to_supervised(coin_complete, sequence_length)
 
     y_predict = model.predict(x)
