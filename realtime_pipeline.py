@@ -189,11 +189,11 @@ if __name__ == '__main__':
 
     # credentials
     cred = pika.credentials.PlainCredentials('hwa125', '960923')
-    connection = pika.BlockingConnection(
-        pika.ConnectionParameters(host='localhost', credentials=cred))
-    channel = connection.channel()
-
-    channel.queue_declare(queue='predict-24')
+    # connection = pika.BlockingConnection(
+    #     pika.ConnectionParameters(host='localhost', credentials=cred))
+    # channel = connection.channel()
+    #
+    # channel.queue_declare(queue='predict-24')
 
     # load model
     #nltk.download('vader_lexicon')
@@ -231,6 +231,11 @@ if __name__ == '__main__':
 
         print ('--------------publish---------------')
         # publish data
+        connection = pika.BlockingConnection(
+            pika.ConnectionParameters(host='localhost', credentials=cred))
+        channel = connection.channel()
+
+        channel.queue_declare(queue='predict-24')
         channel.basic_publish(exchange='', routing_key='predict-24', body=json.dumps(predict_price))
 
         # sleep
